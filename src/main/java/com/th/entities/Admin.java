@@ -91,6 +91,11 @@ public Collection<Role> getRoles() {
 public void setRoles(Collection<Role> roles) {
 	this.roles = roles;
 }
+@Override
+public String toString() {
+	return "Admin [email=" + email + ", password=" + password + ", nomcomplet=" + nomcomplet + ", active=" + active
+			+ ", adresse=" + adresse + ", telephone=" + telephone + ", roles=" + roles + "]";
+}
 
 
 	
