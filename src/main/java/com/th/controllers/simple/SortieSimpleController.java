@@ -28,21 +28,20 @@ SortieService sortieService;
 public String getSorties(Model m)
 {
 Sortie sortie=new Sortie();
-List<Admin> admins=apiadmin.findAdmins();
-m.addAttribute("admins", admins);
-m.addAttribute("sortie",sortie);
-String nom="";
+List<Admin> admins=apiadmin.findAdmins(); // récupération de la liste des admins
+m.addAttribute("admins", admins); // ajout de liste
+m.addAttribute("sortie",sortie); // ajout d'instance
+String nom=""; // initialisation de nomcomplet d'admin
 m.addAttribute("nom",nom);
 return "sortie";
 }
 @PostMapping("sortie")
 public String addSortie(@Valid Sortie sortie,@RequestParam String nom)
 {
-	System.out.println("le nom est: "+nom);
-	Admin ad=apiadmin.findbynom(nom);
-	sortie.setAdmin(ad);
+	Admin ad=apiadmin.findbynom(nom); // recherche d'admin
+	sortie.setAdmin(ad); // association de admin=> sortie
 	
-sortieService.addOne(sortie);
+sortieService.addOne(sortie); // ajout de sortie avec responsable
 //System.out.println("responsable"+responsable.toString());
 
 return "redirect:/sortie";
