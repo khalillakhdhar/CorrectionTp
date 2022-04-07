@@ -38,6 +38,7 @@ return "sortie";
 @PostMapping("sortie")
 public String addSortie(@Valid Sortie sortie,@RequestParam String nom)
 {
+	// @RequestParam nom récupére le nom complet envoyé depuis le menu déroulant
 	Admin ad=apiadmin.findbynom(nom); // recherche d'admin
 	sortie.setAdmin(ad); // association de admin=> sortie
 	
