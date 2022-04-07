@@ -2,6 +2,7 @@ package com.th.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Sortie implements Serializable {
 	private String depart;
 	private String retour;
 	private String description;
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "responsable", referencedColumnName = "nomcomplet")
 	Admin admin;
 	public long getId() {
