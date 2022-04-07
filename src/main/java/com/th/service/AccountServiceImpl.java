@@ -70,7 +70,10 @@ public class AccountServiceImpl implements AccountService {
 		// TODO Auto-generated method stub
 		return adminRepository.findAll();
 	}
-
+public Admin findbynom(String nom)
+{
+return  adminRepository.findByNomcomplet(nom);	
+}
 
 	@Override
 	public List<Role> findRoles() {

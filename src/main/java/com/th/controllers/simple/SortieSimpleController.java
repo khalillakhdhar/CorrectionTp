@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.th.entities.Admin;
 import com.th.entities.Sortie;
@@ -27,14 +29,22 @@ public String getSorties(Model m)
 {
 Sortie sortie=new Sortie();
 List<Admin> admins=apiadmin.findAdmins();
-m.addAttribute(admins);
-m.addAttribute(sortie);
+m.addAttribute("admins", admins);
+m.addAttribute("sortie",sortie);
+String nom="";
+m.addAttribute("nom",nom);
 return "sortie";
 }
 @PostMapping("sortie")
-public String addSortie(@Valid Sortie sortie)
+public String addSortie(@Valid Sortie sortie,@RequestParam String nom)
 {
+	System.out.println("le nom est: "+nom);
+	Admin ad=apiadmin.findbynom(nom);
+	sortie.setAdmin(ad);
+	
 sortieService.addOne(sortie);
+//System.out.println("responsable"+responsable.toString());
+
 return "redirect:/sortie";
 
 }
