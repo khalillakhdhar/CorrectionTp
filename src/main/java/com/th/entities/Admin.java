@@ -3,6 +3,7 @@ package com.th.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,6 +29,7 @@ private String nomcomplet;
 private int active;
 private String adresse;
 private String telephone;
+static String rolesListe="";
 @ManyToMany(fetch = FetchType.EAGER)
 private Collection<Role> roles= new ArrayList<Role>();
 
@@ -95,6 +97,14 @@ public void setRoles(Collection<Role> roles) {
 public String toString() {
 	return "Admin [email=" + email + ", password=" + password + ", nomcomplet=" + nomcomplet + ", active=" + active
 			+ ", adresse=" + adresse + ", telephone=" + telephone + ", roles=" + roles + "]";
+}
+public  String getRolesListe() {
+	for(Role r: roles)
+	rolesListe+=" "+r.getRoleName();	
+	return rolesListe;
+}
+public  void setRolesListe(String rolesListe) {
+	Admin.rolesListe = rolesListe;
 }
 
 

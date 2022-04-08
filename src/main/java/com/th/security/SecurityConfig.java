@@ -40,6 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login/**").permitAll();	
 //	http.csrf().disable().authorizeRequests().and().httpBasic();
 //
+		//http.authorizeRequests().antMatchers("/admin/**").hasIpAddress("127.0.23.5"); exemple d'adresse IP
+		
 //	http.authorizeRequests().antMatchers("/login/**").permitAll();
 //	http.authorizeRequests().antMatchers("/register/**").permitAll();
 //

@@ -1,4 +1,7 @@
 package com.th;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +25,7 @@ public class CorrectionTpApplication implements CommandLineRunner {
 	SortieService sortieService;
 	@Autowired 
 	ParticipantService participantService;
+	private String ip;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CorrectionTpApplication.class, args);
@@ -30,6 +34,19 @@ public class CorrectionTpApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		 InetAddress ip;
+	        String hostname;
+	        try {
+	            ip = InetAddress.getLocalHost();
+	            hostname = ip.getHostName();
+	            System.out.println("Your current IP address : " + ip);
+	            System.out.println("Your current Hostname : " + hostname);
+	 
+	        } catch (UnknownHostException e) {
+	 
+	            e.printStackTrace();
+	        }
 		api.saveUser(new Admin("test@gmail.com", "teste", "teste", 1,"aucune","20788999", null));
 		api.saveUser(new Admin("test2@gmail.com", "teste2", "teste2", 1,"aucune2","20788933", null));
 		Role r1=new Role();

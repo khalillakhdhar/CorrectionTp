@@ -33,7 +33,7 @@
   <textarea class="form-control" th:field="*{adresse}" name="adresse"  placeholder="votre adresse ici"></textarea>
 </div>
 <div class="mb-3">
-  <label  class="form-label">téléphone</label>
+  <label  class="form-label">telephone</label>
   <input type="text"  class="form-control" th:field="*{telephone}" >
 </div>
 <div class="mb-3">
@@ -41,7 +41,7 @@
   
   <select  class="form-control" th:name="role" >
 <option th:each="rl : ${roles}" th:value="${rl.roleName}" 
-       th:text="${ad.roleName}" >
+       th:text="${rl.roleName}" >
       </option>  
   </select>
 </div>
@@ -56,7 +56,29 @@
       
     </div>
 
+<table class="table table-bordered">
+<thead>
+<th>Nom complet</th>
+<th>Email</th>
+<th>adresse</th>
+<th>telephone</th>
+<th>Role</th>
 
+
+</thead>
+<tbody>
+<tr th:each="ad : ${admins}">
+<td th:utext="${ad.nomcomplet}"></td>
+<td th:utext="${ad.email}"></td>
+<td th:utext="${ad.adresse}"></td>
+<td th:utext="${ad.telephone}"></td>
+<td th:utext="${ad.rolesListe}"></td>
+
+
+</tr>
+
+</tbody>
+</table>
 
 </body>
 </html>
