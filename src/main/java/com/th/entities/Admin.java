@@ -99,8 +99,11 @@ public String toString() {
 			+ ", adresse=" + adresse + ", telephone=" + telephone + ", roles=" + roles + "]";
 }
 public  String getRolesListe() {
+	rolesListe="";
 	for(Role r: roles)
-	rolesListe+=" "+r.getRoleName();	
+	{
+	rolesListe+=" "+r.getRoleName();
+	}
 	return rolesListe;
 }
 public  void setRolesListe(String rolesListe) {

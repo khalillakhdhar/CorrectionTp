@@ -38,6 +38,7 @@ public class AdminController {
 	@PostMapping("add")
 	public String addAdmin(@Valid Admin admin,@RequestParam String role)
 	{
+		admin.setActive(1);
 		accountServiceImpl.saveUser(admin);
 		accountServiceImpl.addRoleToUser(admin.getEmail(), role);
 		
